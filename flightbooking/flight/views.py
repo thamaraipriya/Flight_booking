@@ -67,8 +67,11 @@ def register(request):
         return render(request,'register.html')
     
 def mybooking(request):
-    booking=User_booking.objects.all()
-    return render(request,'mybooking.html',{'booking':booking})
+    if User.objects.filter(email=User_booking.Email):
+        booking=User_booking.objects.all()
+        return render(request,'mybooking.html',{'booking':booking})
+    else:
+        return HttpResponse("<h1><center>Reserved ticket is None</center></h1>")
 
 def login(request):
     if request.method=="POST":
@@ -113,10 +116,12 @@ def verify(request,auth_token):
         profile_obj=Profile.objects.filter(auth_token=auth_token).exists()
         if profile_obj:
             if profile_obj.is_verified:
-                return HttpResponse("<h1><center>Your account has been already verified</center></h1>")
+                messages.success(request,'Your account has been already verified')
+                return redirect('register')
             profile_obj.is_verified=True
             profile_obj.save()
-            return HttpResponse("<h1><center>Your account is verified Successfully</center></h1>")
+            messages.success(request,'Your account is verified Successfully')
+            return redirect('login')
         else:
             messages.info(request,'Error')
             return redirect('login')

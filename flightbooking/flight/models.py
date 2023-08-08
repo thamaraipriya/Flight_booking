@@ -29,11 +29,10 @@ class User_booking(models.Model):
     Departure_date=models.DateField(null=True)
     Return_date=models.DateField(null=True)
     Adult=models.IntegerField(null=True)
-    Child=models.IntegerField(null=True)
-    Infant=models.IntegerField(null=True)
+    Child=models.CharField(max_length=3,null=True)
+    Infant=models.CharField(max_length=3,null=True)
     Date_now=models.DateTimeField(default=datetime.now,blank=True)
     Full_name=models.CharField(max_length=64,null=True)
     Email=models.CharField(max_length=20,null=True)
     Mobile_number=models.CharField(max_length=10,null=True)
-
     
