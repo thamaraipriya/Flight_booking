@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Reservation</title>
+    <style>
+        body{
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('{% static 'img/regbg.png' %}'); 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;     
+        }
+    h1, h2, p, form, input, button,select {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color:black;
+  opacity: 0.6;
+}
+
+header {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.search-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #155799;
+    margin-bottom: 10px;
+}
+input[type="text"],
+input[type="date"],select {
+    padding: 8px;
+    margin: 5px;
+    border: black;
+    border-radius: 3px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: darkblue;
+    color: white;
+    font-style:bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00796b;
+}
+h3{
+    color:green;
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome! Happy Journey</h1>
+    </header>
+    <div class="content">
+        <!-- <div class="image-container">
+            <img src="{% static 'images/plane.jpg' %}" alt="Your Image">
+        </div>
+         -->
+    </div>
+    <main>
+        <section class="search-section">
+            <h2>Search for Flights</h2>
+            <form class="search-form" method="POST" action="search">
+                {% csrf_token %}
+                {% for message in messages %}
+                <h3>{{message}}</h3>
+                {% endfor %}
+                <label>From:</label>
+                <select name="search_from">
+                    <option>From</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Kochi">Kochi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="New York">New York</option>
+                 </select>
+                <!--input type="text" id="from" name="from" placeholder="Departure"> -->
+                <label>To:</label>
+                <select name="search_to">
+                    <option>To</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Kochi">Kochi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="New York">New York</option>
+                 </select>
+                <!--<input type="text" id="to" name="to" placeholder="Destination"> -->
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+    </main>
+    <br><br>
+    <footer>
+        <p>
+            <center>&copy; 2023 Flight Reservation. All rights reserved.</center></p>
+    </footer>
+</body>
+</html>

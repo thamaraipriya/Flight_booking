@@ -1,0 +1,46 @@
+{% load static %}
+<html>
+    <head>
+        <title>Login User</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}"></head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                margin: 0;
+                background-image: url('{% static 'img/regbg.png' %}');      
+                background-repeat: no-repeat;
+                background-attachment:fixed;
+                background-size:cover;
+            }
+            h4{
+                color:red;
+            }
+            a{
+                text-decoration: none;
+            }     
+        </style>
+        <body>
+        <div class="content">
+    <form method="POST" action="login">
+        {% csrf_token %}
+        <h1>Login</h1>
+        {% if messages %}
+        {% for message in messages %}
+        <h4>{{message}}</h4>
+        {% endfor %}
+        {% endif %}
+        <label>Username</label><br>
+        <input type="text" name="username" placeholder="Username"/><br><br>
+        <label>Password</label><br>
+        <input type="password" name="password" placeholder="Create password"/><br><br>
+        <button>Login</button>
+        <a href="admin"><p>Login as admin: Click here!</p></a>
+        <a href="register"><p>Don't have an account? Sign up</p></a>
+    </form>
+</div>
+<footer>
+    <p>
+        <center>&copy; 2023 Flight Reservation. All rights reserved.</center></p>
+</footer>
+</body>
+</html>

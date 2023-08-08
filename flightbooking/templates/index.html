@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flight Booking</title>
+        <style>
+            body{
+                margin: 0;
+                background-image: url('{% static 'img/bg.png' %}');      
+                background-repeat: no-repeat;
+                background-attachment:fixed;
+                background-size:cover;
+            }
+            h1{
+                padding-left:50px;
+                padding-top:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            {% if user.is_authenticated %}
+            <a href='logout'>Logout</a>
+            <a href="mybooking">My booking</a>
+            <a href="booking">Book tickets</a>
+            <a href="search">Search Flights</a>
+            <img src="{% static 'img/Logo.png' %}" alt="Journey to happiness"/>
+            {% else %}
+                <a href="register">Login or Signup</a>
+                <a href="#">Home</a>
+                <img src="{% static 'img/Logo.png' %}" alt="Journey with happiness"/> -->
+            {% endif %}
+        </div>
+        </div>
+        <div>
+            <h1 style="align-content: left;"><pre>
+                Life Is Short And 
+                   The World Is Wide!
+                        Ready To Take Of?
+            </pre></h1>
+            </pre>
+        </div>
+    </body>
+</html>

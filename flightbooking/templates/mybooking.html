@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Bookings</title>
+    </head>
+    <body>
+        {% csrf_token %}
+        <form method="POST" , action="mybooking">
+        {% if user.is_authenticated %}
+        {% for booking in booking %}
+        <h1>Your Booking</h1><br>
+        <p1>Full name : {{booking.Fullname}}</p1><br>
+        <p1>Email: {{booking.Email}}</p1><br>
+        <p1>Mobile Number: {{booking.Mobile_number}}</p1><br>
+        <p1>Origin : {{booking.Origin}}</p1><br>
+        <p1>Destination : {{booking.Destination}}</p1><br>
+        <p1>Preferred Seat : {{booking.Preferred_Seating}}</p1><br>
+        <p1>Departure date : {{booking.Departure_date}}</p1><br>
+        {% endfor %}
+        {% endif %}
+    </form>
+</body>
+</html>

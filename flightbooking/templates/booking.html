@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flight booking</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}"></head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                margin: 0;
+                background-image: url('{% static 'img/regbg.png' %}');      
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                font-family: Arial, sans-serif;
+            }
+            table{
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;}
+            table, th, td {    
+margin-left: auto;  
+margin-right: auto;  
+border-collapse: collapse;    
+width: 500px;  
+text-align: left;
+color:black;
+font-style:bold;
+font-family: Arial, sans-serif;
+font-size: 15px;  
+padding:10px;
+padding-left:50px;
+} 
+.opt{
+margin-left: auto;  
+margin-right: auto; 
+text-align: center;
+padding:15px;
+}
+.con{max-width: 100%;
+    margin: 0 auto;}
+h3{
+        color:green;
+    }
+</style>
+    <body>
+        <div class="con">
+        <form method="POST" action="booking">
+        {% csrf_token %}
+        <h1><center>Flight Reservation</center></h1>
+        {% for message in messages %}
+        <h3>{{messages}}</h3>
+        {% endfor %}
+        <div class="opt">
+            <input type="radio" id="a-option" name="selector1">
+            <label for="a-option">One Way</label>&nbsp;&nbsp;&nbsp;
+            <input type="radio" id="b-option" name="selector1">
+            <label for="b-option">Round-Trip</label>
+        </div>
+        <table>
+            <tr><td><br></td></tr>
+        <tr>
+        <td><label>Origin:</label><br></td>
+        <td>
+        <select name="from">
+            <option>From</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Kochi">Kochi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Singapore">Singapore</option>
+            <option value="New York">New York</option>
+         </select>
+        </td>
+        </tr>
+        <tr>
+        <td><label>Destination:</label><br></td>
+        <td>
+            <select name="to">
+               <option>To</option>
+               <option value="Bengaluru">Bengaluru</option>
+               <option value="Chennai">Chennai</option>
+               <option value="Singapore">Singapore</option>
+               <option value="Hyderabad">Hyderabad</option>
+               <option value="New York">New York</option>
+               <option value="Kochi">Kochi</option>
+            </select>
+            </td>
+        </tr>
+        <tr><td><label>Preferred Seating:</label></td>
+            <td>
+            <select name="pre_seat">
+            <option>Preferred Seating</option>
+            <option value="Window">Window</option>
+            <option value="Aisle">Aisle</option>
+         </select></td>
+        </tr>
+        <tr>
+            <td><label>Departure Date</label></td>
+            <td><input name="Text" type="date" placeholder="Departure Date" value="" required=""></td>
+        </tr>
+        <tr>
+            <td><label>Adult(Above 12 yrs)</label></td>
+            <td>
+            <select name="adult">
+               <option>Adult</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Children(2-11 yrs)</label></td>
+            <td>
+                <select name="child">
+                    <option>Children</option>
+                    <option value="Nil">Nil</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Infant(Under 2 yrs)</label></td>
+            <td>
+                <select name="infant">
+                    <option>Infant</option>
+                    <option value="Nil">Nil</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                 </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Return Date</label></td>
+            <td><input name="Text1" type="date" placeholder="Return Date" value="" required=""></td>
+        </tr>
+        <tr>
+            <td>
+                <label>Fullname</label>
+            </td>
+            <td>
+                <input type="text" name="fullname"  placeholder="Fullname"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email</label>
+            </td>
+            <td>
+                <input type="email" name="email"  placeholder="Email"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Mobile number</label>
+            </td>
+            <td>
+                <input type="text" name="mobileno"  placeholder="Mobile number"/>
+            </td>
+        </tr>
+        <tr><td><br></td></tr>
+    </table>
+    <div class="opt">
+       <input type="submit" value="Submit">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="reset" value="Clear Form">
+    </div>
+</form>
+    </div>
+    <footer>
+        <p>
+            <center>&copy; 2023 Flight Reservation. All rights reserved.</center></p>
+    </footer>
+    </body>
+</html>
