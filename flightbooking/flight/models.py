@@ -23,6 +23,7 @@ class Flight_detail(models.Model):
     Date_now=models.DateTimeField(default=datetime.now,blank=True)
 
 class User_booking(models.Model):
+    User_Name= models.CharField(max_length=60,null=True)
     Origin=models.CharField(max_length=64,null=True)
     Destination=models.CharField(max_length=10,null=True)
     Preferred_Seating=models.CharField(max_length=64,null=True)
@@ -33,6 +34,6 @@ class User_booking(models.Model):
     Infant=models.CharField(max_length=3,null=True)
     Date_now=models.DateTimeField(default=datetime.now,blank=True)
     Full_name=models.CharField(max_length=64,null=True)
-    Email=models.CharField(max_length=20,null=True)
+    Email=models.CharField(max_length=50,null=True)
     Mobile_number=models.CharField(max_length=10,null=True)
     

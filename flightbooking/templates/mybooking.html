@@ -7,10 +7,14 @@
         <title>My Bookings</title>
     </head>
     <body>
-        {% csrf_token %}
         <form method="POST" , action="mybooking">
+        {% csrf_token %}
         {% if user.is_authenticated %}
-        {% for booking in booking %}
+        <h1>Please verify your username to check all your Bookings</h1><br>
+        <label>User Name</label>
+        <input type="text" name="username"  placeholder="Username"/>
+        <button>Submit</button><br><br>
+        {% for booking in bookings %}
         <h1>Your Booking</h1><br>
         <p1>Full name : {{booking.Full_name}}</p1><br>
         <p1>Email: {{booking.Email}}</p1><br>
